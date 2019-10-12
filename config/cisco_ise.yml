@@ -1,0 +1,10 @@
+production:
+  mnt_ip: "10.30.7.160"
+  pan_ip: "10.30.7.161"
+  ise_username: "ers-admin"
+  ise_password: "S4az1Mez*Ja$M4$q"
+development:
+  mnt_ip: "10.30.7.160"
+  pan_ip: "10.30.7.161"
+  ise_username: "ers-admin"
+  ise_password: "S4az1Mez*Ja$M4$q"
