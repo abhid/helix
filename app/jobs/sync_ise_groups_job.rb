@@ -10,14 +10,6 @@ class SyncIseGroupsJob < ApplicationJob
       eig.save
     end
 
-    # Sync DACL
-    $ers.dacl_getAll().each do |ers_dacl|
-      dacl = DownloadableAcl.find_or_create_by(uuid: ers_dacl["id"])
-      dacl.name = ers_dacl["name"]
-      dacl.description = ers_dacl["description"]
-      dacl.save
-    end
-
     # Sync NDG
     $ers.ndg_getAll().each do |ers_ndg|
       ndg = NetworkDeviceGroup.find_or_create_by(uuid: ers_ndg["id"])
@@ -34,11 +26,27 @@ class SyncIseGroupsJob < ApplicationJob
       nd.save
     end
 
+    # Sync DACL
+    $ers.dacl_getAll().each do |ers_dacl|
+      dacl = DownloadableAcl.find_or_create_by(uuid: ers_dacl["id"])
+      dacl.name = ers_dacl["name"]
+      dacl.description = ers_dacl["description"]
+
+      dacl_detail = $ers.dacl_get(ers_dacl["id"])["DownloadableAcl"]
+      dacl.dacl = dacl_detail["dacl"]
+      dacl.save
+    end
+
     # Sync AZNProfile
     $ers.aznprofile_getAll().each do |ers_azn|
       azn = AuthorizationProfile.find_or_create_by(uuid: ers_azn["id"])
       azn.name = ers_azn["name"]
       azn.description = ers_azn["description"]
+
+      azn_detail = $ers.aznprofile_get(ers_azn["id"])["AuthorizationProfile"]
+      azn.access_type = azn_detail["accessType"]
+      azn.authz_profile_type = azn_detail["authzProfileType"]
+      azn.dacl_name = azn_detail["airespaceACL"] || azn_detail["daclName"]
       azn.save
     end
   end

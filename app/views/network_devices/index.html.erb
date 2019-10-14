@@ -1,0 +1,23 @@
+<div class="mt-4 d-flex justify-content-end">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+<div class="col-6">
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>IP Address</th>
+      </tr>
+      <tbody>
+        <% @network_devices.each do |network_device| %>
+          <tr>
+            <td title="<%= network_device.uuid %>"><samp><%= network_device.name %></samp></td>
+            <td><%= network_device.description %></td>
+            <td><%= network_device.ip_address %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+</div>

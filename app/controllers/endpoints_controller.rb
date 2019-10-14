@@ -1,6 +1,6 @@
 class EndpointsController < ApplicationController
   def index
-
+    redirect_to root_url
   end
 
   def show

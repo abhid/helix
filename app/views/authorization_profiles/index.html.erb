@@ -1,0 +1,23 @@
+<div class="mt-4 d-flex justify-content-end">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+<div class="col-6">
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>DACL</th>
+      </tr>
+      <tbody>
+        <% @authorization_profiles.each do |azn_profile| %>
+          <tr>
+            <td title="<%= azn_profile.uuid %>"><samp><%= azn_profile.name %></samp></td>
+            <td><%= azn_profile.description %></td>
+            <td><span class="badge <%= azn_profile.access_type == "ACCESS_ACCEPT" ? "badge-success" : "badge-danger" %>""><%= azn_profile.dacl_name || "Default" %></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+</div>

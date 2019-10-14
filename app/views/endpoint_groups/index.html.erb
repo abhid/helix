@@ -1,0 +1,21 @@
+<div class="mt-4 d-flex justify-content-end">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+<div class="col-6">
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tbody>
+        <% @endpoint_groups.each do |ep_group| %>
+          <tr>
+            <td title="<%= ep_group.uuid %>"><samp><%= ep_group.name %></samp></td>
+            <td><%= ep_group.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+</div>
