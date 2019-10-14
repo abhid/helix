@@ -16,5 +16,7 @@ module Isebox
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.ise = config_for(:cisco_ise)
+    # Enable sidekiq as the job queue
+    config.active_job.queue_adapter = :sidekiq
   end
 end

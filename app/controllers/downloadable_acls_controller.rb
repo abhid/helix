@@ -1,0 +1,2 @@
+class DownloadableAclsController < ApplicationController
+end

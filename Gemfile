@@ -57,3 +57,5 @@ gem 'nokogiri'
 gem 'pagy'
 gem 'isepick', path: "/home/adevireddy/src/isepick"
 gem 'awesome_print'
+gem 'sidekiq'
+gem 'rufus-scheduler'

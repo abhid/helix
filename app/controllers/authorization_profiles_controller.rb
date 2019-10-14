@@ -1,0 +1,2 @@
+class AuthorizationProfilesController < ApplicationController
+end

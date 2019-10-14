@@ -1,0 +1,2 @@
+module NetworkDeviceGroupsHelper
+end

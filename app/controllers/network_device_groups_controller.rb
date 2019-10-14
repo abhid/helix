@@ -1,0 +1,2 @@
+class NetworkDeviceGroupsController < ApplicationController
+end

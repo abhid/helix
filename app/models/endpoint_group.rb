@@ -1,0 +1,2 @@
+class EndpointGroup < ApplicationRecord
+end

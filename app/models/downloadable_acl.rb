@@ -1,0 +1,2 @@
+class DownloadableAcl < ApplicationRecord
+end

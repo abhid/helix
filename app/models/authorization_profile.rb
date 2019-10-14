@@ -1,0 +1,2 @@
+class AuthorizationProfile < ApplicationRecord
+end

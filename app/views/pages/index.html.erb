@@ -1,1 +1,23 @@
-<%# <%= raw(ap @sessions["activeList"]["noOfActiveSession"]) %> %>
+<div class="row mt-4">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header font-weight-bold">
+        ISEbox Status
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          ISE PAN <kbd class="ml-1"><%= Rails.configuration.ise.pan_ip %></kbd><br/>
+          ISE MnT <kbd class="ml-1"><%= Rails.configuration.ise.mnt_ip %></kbd></li>
+        <li class="list-group-item">
+          Synced <%= Session.count %> active sessions
+          <time class="timeago badge badge-primary ml-1" datetime="<%=Session.maximum(:updated_at).iso8601%>"></time>
+        </li>
+        <li class="list-group-item"><%= Endpoint.count %> endpoints tracked in ISEbox</li>
+        <li class="list-group-item"><%= NetworkDeviceGroup.count %> network device groups synced</li>
+        <li class="list-group-item"><%= EndpointGroup.count %> endpoint groups synced</li>
+        <li class="list-group-item"><%= DownloadableAcl.count %> downloadable ACLs synced</li>
+        <li class="list-group-item"><%= AuthorizationProfile.count %> authorization profiles tracked</li>
+      </ul>
+    </div>
+  </div>
+</div>

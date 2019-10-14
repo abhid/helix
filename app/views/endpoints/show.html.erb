@@ -1,0 +1,103 @@
+<div class="row mt-4">
+  <div class="col-5">
+    <table class="table table-hover table-sm table-borderless">
+      <caption>Active Session Info</caption>
+      <tr>
+        <td>IP Address</td>
+        <td><samp><%= @mnt_ep["framed_ip_address"] %></samp></td>
+      </tr>
+      <tr>
+        <td>MAC Address</td>
+        <td><samp><%= @mnt_ep["calling_station_id"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Username</td>
+        <td><samp><%= @mnt_ep["user_name"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Network Location</td>
+        <td><samp><%= @mnt_ep["network_device_name"] %> | <%= @mnt_ep["nas_port_id"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Session passed</td>
+        <td><samp><%= @mnt_ep["passed"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Authentication Method / Protocol</td>
+        <td><samp><%= @mnt_ep["authentication_method"] %> / <%= @mnt_ep["authentication_protocol"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Authorization Profile</td>
+        <td><samp><%= @mnt_ep["selected_azn_profiles"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Identity Store</td>
+        <td><samp><%= @mnt_ep["identity_store"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Location</td>
+        <td><samp><%= @mnt_ep["location"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Endpoint Policy</td>
+        <td><samp><%= @mnt_ep["endpoint_policy"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Downloadable ACL</td>
+        <td><samp><%= @mnt_ep["dacl"] %></samp></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-5">
+    <table class="table table-hover table-sm table-borderless">
+      <caption>Endpoint Info</caption>
+      <tr>
+        <td>Name</td>
+        <td><samp><%= @ers_ep["name"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Group</td>
+        <td title="<%= @ers_ep["groupId"] %>"><samp><%= @ep_group.name %></samp><br/><%= @ep_group.description %></td>
+      </tr>
+      <tr>
+        <td>Static Group Assignment</td>
+        <td><samp><%= @ers_ep["staticGroupAssignment"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Profile</td>
+        <td><samp><%= @ers_ep["profileId"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Static Profile Assignment</td>
+        <td><samp><%= @ers_ep["staticProfileAssignment"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Portal User</td>
+        <td><samp><%= @ers_ep["portalUser"] %></samp></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-2">
+    <div class="card bg-transparent border-light">
+        <a href="#" class="btn btn-primary btn-sm mb-1">Add static profile</a>
+        <a href="#" class="btn btn-success btn-sm mb-1 disabled">Sync with ISE</a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <a href="#debugCollapse" data-toggle="collapse" class="list-group-item list-group-action active bg-secondary">Debug Info</a>
+        <div id="debugCollapse" class="collapse p-2">
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary btn-sm my-1 clipboard" data-clipboard-target="#debugClipboard">Copy debug info</button>
+          </div>
+          <%= @session.nil? ? "No Active Session found" : raw(ap({active_session: @session}, {plain: true, indent: 2})) %>
+          <span id="debugClipboard"><%= raw(ap({mnt_endpoint: @mnt_ep}, {plain: true, indent: 2})) %></span>
+          <%= raw(ap({ers_endpoint: @ers_ep}, {plain: true, indent: 2})) %>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

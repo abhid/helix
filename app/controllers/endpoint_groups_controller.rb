@@ -1,0 +1,2 @@
+class EndpointGroupsController < ApplicationController
+end
