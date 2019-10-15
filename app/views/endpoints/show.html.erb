@@ -8,7 +8,11 @@
       </tr>
       <tr>
         <td>MAC Address</td>
-        <td><samp><%= @mnt_ep["calling_station_id"] %></samp></td>
+        <td><samp><%= @mnt_ep["calling_station_id"] %></samp>
+          <% unless @session.active? %>
+            <span class="badge badge-danger ml-2">INACTIVE</span>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td>Username</td>

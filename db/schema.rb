@@ -48,11 +48,13 @@ ActiveRecord::Schema.define(version: 2019_10_14_033113) do
     t.uuid "uuid"
     t.text "description"
     t.string "mac"
+    t.bigint "endpoint_group_id"
     t.bigint "added_by_id"
     t.bigint "modified_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["added_by_id"], name: "index_endpoints_on_added_by_id"
+    t.index ["endpoint_group_id"], name: "index_endpoints_on_endpoint_group_id"
     t.index ["modified_by_id"], name: "index_endpoints_on_modified_by_id"
   end
 
@@ -78,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_033113) do
     t.string "ip_address"
     t.string "username"
     t.string "audit_session_id"
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["audit_session_id"], name: "index_sessions_on_audit_session_id"

@@ -5,6 +5,8 @@ class CreateEndpoints < ActiveRecord::Migration[6.0]
       t.uuid :uuid
       t.text :description
       t.string :mac
+      t.references :endpoint_group
+      
       t.references :added_by, index: true, foreign_key: {to_table: :users}
       t.references :modified_by, index: true, foreign_key: {to_table: :users}
 

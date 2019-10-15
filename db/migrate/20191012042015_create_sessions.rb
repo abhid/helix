@@ -5,7 +5,8 @@ class CreateSessions < ActiveRecord::Migration[6.0]
       t.string :ip_address, index: true
       t.string :username, index: true
       t.string :audit_session_id, index: true
-      
+      t.boolean :active, default: true
+
       t.timestamps
     end
   end

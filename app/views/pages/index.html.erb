@@ -9,12 +9,13 @@
           ISE PAN <kbd class="ml-1"><%= Rails.configuration.ise.pan_ip %></kbd><br/>
           ISE MnT <kbd class="ml-1"><%= Rails.configuration.ise.mnt_ip %></kbd></li>
         <li class="list-group-item">
-          Synced <%= Session.count %> active sessions
+          Synced <%= Session.where(active: true).count %> active sessions
           <time class="timeago badge badge-primary ml-1" datetime="<%=Session.maximum(:updated_at).iso8601%>"></time>
         </li>
         <li class="list-group-item"><%= Endpoint.count %> endpoints tracked in ISEbox</li>
-        <li class="list-group-item"><%= NetworkDeviceGroup.count %> network device groups synced</li>
         <li class="list-group-item"><%= EndpointGroup.count %> endpoint groups synced</li>
+        <li class="list-group-item"><%= NetworkDevice.count %> network devices synced</li>
+        <li class="list-group-item"><%= NetworkDeviceGroup.count %> network device groups synced</li>
         <li class="list-group-item"><%= DownloadableAcl.count %> downloadable ACLs synced</li>
         <li class="list-group-item"><%= AuthorizationProfile.count %> authorization profiles tracked</li>
       </ul>

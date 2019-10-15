@@ -11,7 +11,11 @@
       <tbody>
         <% @endpoint_groups.each do |ep_group| %>
           <tr>
-            <td title="<%= ep_group.uuid %>"><samp><%= ep_group.name %></samp></td>
+            <td title="<%= ep_group.uuid %>">
+              <%= link_to endpoint_group_path(ep_group.uuid) do %>
+                <samp><%= ep_group.name %></samp>
+              <% end %>
+            </td>
             <td><%= ep_group.description %></td>
           </tr>
         <% end %>
