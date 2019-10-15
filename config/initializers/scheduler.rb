@@ -4,7 +4,7 @@ sch = Rufus::Scheduler.singleton
 sch.every '5m' do
   # Rails.logger.info "[BACKGROUND] #{Time.now} Running Import Active Sessions..."
   # Rails.logger.flush
-  ImportActiveSessionsJob.perform_later
+  SyncActiveSessionsJob.perform_later
 end
 
 sch.every '15m' do

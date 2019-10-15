@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ImportActiveSessionsJobTest < ActiveJob::TestCase
+class SyncActiveSessionsJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end
