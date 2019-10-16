@@ -1,0 +1,25 @@
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Network Device Details
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">UUID</div>
+          <div class="col-8"><samp><%= @network_device.uuid %></samp></div>
+          <div class="col-4">Name</div>
+          <div class="col-8"><%= @network_device.name %></div>
+          <div class="col-4">Description</div>
+          <div class="col-8"><span class="editable" data-update="<%= network_device_path(@network_device) %>" data-param="description" data-id="<%= @network_device.id %>"><%= @network_device.description %></span></div>
+          <div class="col-4">IP Address</div>
+          <div class="col-8"><%= @network_device.ip_address %></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-2">
+      <%= link_to "SSH to device", "ssh://#{@network_device.ip_address}", class: "btn btn-primary btn-sm" %>
+  </div>
+</div>

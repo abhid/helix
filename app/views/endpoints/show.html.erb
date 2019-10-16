@@ -40,7 +40,7 @@
       </tr>
       <tr>
         <td>Location</td>
-        <td><samp><%= @mnt_ep["location"] %></samp></td>
+        <td><samp><%= @mnt_ep["location"].gsub("#", " / ") %></samp></td>
       </tr>
       <tr>
         <td>Endpoint Policy</td>

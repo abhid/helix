@@ -16,7 +16,7 @@
                 <samp><%= ep_group.name %></samp>
               <% end %>
             </td>
-            <td><%= ep_group.description %></td>
+            <td><span class="editable" data-update="<%= endpoint_group_path(ep_group) %>" data-param="description" data-id="<%= ep_group.id %>"><%= ep_group.description %></td>
           </tr>
         <% end %>
       </tbody>

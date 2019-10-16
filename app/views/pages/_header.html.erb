@@ -12,9 +12,9 @@
     <li class="nav-item"><samp style="vertical-align: sub;"><%= current_user %>/<%=request.remote_ip%></samp></li>
     <%= link_to "My Status", status_path, class: "nav-item btn btn-sm btn-primary ml-2" %>
   </ul>
-  <form class="form-inline">
+  <div class="form-inline">
     <div class="input-group">
       <input id="autocomplete" tabindex=1 class="form-control form-control-sm" type="search" placeholder="Search by MAC/IP/User" aria-label="Search" autocomplete="off">
     </div>
-  </form>
+  </div>
 </nav>

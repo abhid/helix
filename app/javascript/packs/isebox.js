@@ -36,4 +36,18 @@ $(document).on('turbolinks:load', function() {
 
   // Clipboard.js init
   new ClipboardJS('.clipboard');
+
+  // In-place editor
+  // $(".editable").editable("update");
+  $(".editable").each(function(idx, el) {
+    $(el).editable($(el).data("update_path"), {
+      id   : null,
+      name : $(el).data("param"),
+      method: 'PUT',
+      intercept: function(json) {
+        json = JSON.parse(json);
+        return json[$(el).data("param")];
+      }
+    });
+  });
 });

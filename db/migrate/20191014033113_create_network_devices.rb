@@ -4,8 +4,10 @@ class CreateNetworkDevices < ActiveRecord::Migration[6.0]
       t.string :uuid
       t.string :name
       t.string :description
+      t.string :type
       t.string :ip_address
-      
+      t.boolean :updated, default: false
+
       t.timestamps
     end
   end

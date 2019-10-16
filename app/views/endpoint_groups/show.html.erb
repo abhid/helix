@@ -1,3 +1,22 @@
-<%= raw(ap(@endpoint_group, {plain: true})) %>
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Endpoint Identity Group
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">UUID</div>
+          <div class="col-8"><samp><%= @endpoint_group.uuid %></samp></div>
+          <div class="col-4">Name</div>
+          <div class="col-8"><%= @endpoint_group.name %></div>
+          <div class="col-4">Description</div>
+          <div class="col-8"><span class="editable" data-update="<%= endpoint_group_path(@endpoint_group) %>" data-param="description" data-id="<%= @endpoint_group.id %>"><%= @endpoint_group.description %></span></div>
+        </div>
+      </div>
+    </div>
 
-<%= raw(ap(@endpoints, {plain: true})) %>
+  </div>
+  <div class="col-2">
+  </div>
+</div>

@@ -6,18 +6,23 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          ISE PAN <kbd class="ml-1"><%= Rails.configuration.ise.pan_ip %></kbd><br/>
-          ISE MnT <kbd class="ml-1"><%= Rails.configuration.ise.mnt_ip %></kbd></li>
+          <div class="row">
+            <div class="col-4">ISE PAN</div>
+            <div class="col-8"><kbd class="ml-1"><%= Rails.configuration.ise.pan_ip %></kbd></div>
+            <div class="col-4">ISE MnT</div>
+            <div class="col-8"><kbd class="ml-1"><%= Rails.configuration.ise.mnt_ip %></kbd></div>
+          </div>
+        </li>
         <li class="list-group-item">
-          Synced <%= Session.where(active: true).count %> active sessions
+          <%= Session.where(active: true).count %> active sessions tracked
           <time class="timeago badge badge-primary ml-1" datetime="<%=Session.maximum(:updated_at).iso8601%>"></time>
         </li>
         <li class="list-group-item"><%= Endpoint.count %> endpoints tracked in ISEbox</li>
-        <li class="list-group-item"><%= EndpointGroup.count %> endpoint groups synced</li>
-        <li class="list-group-item"><%= NetworkDevice.count %> network devices synced</li>
-        <li class="list-group-item"><%= NetworkDeviceGroup.count %> network device groups synced</li>
-        <li class="list-group-item"><%= DownloadableAcl.count %> downloadable ACLs synced</li>
-        <li class="list-group-item"><%= AuthorizationProfile.count %> authorization profiles tracked</li>
+        <li class="list-group-item"><%= link_to "#{EndpointGroup.count} endpoint groups", endpoint_groups_path %> synced</li>
+        <li class="list-group-item"><%= link_to "#{AuthorizationProfile.count} authorization profiles", authorization_profiles_path %> synced</li>
+        <li class="list-group-item"><%= link_to "#{DownloadableAcl.count} downloadable ACLs", downloadable_acls_path %> synced</li>
+        <li class="list-group-item"><%= link_to "#{NetworkDevice.count} network devices", network_devices_path %> synced<time class="timeago badge badge-primary ml-1" datetime="<%=NetworkDevice.maximum(:updated_at).iso8601%>"></time></li>
+        <li class="list-group-item"><%= link_to "#{NetworkDeviceGroup.count} network device groups", network_devices_path %> synced</li>
       </ul>
     </div>
   </div>

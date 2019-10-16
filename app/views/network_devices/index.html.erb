@@ -8,13 +8,17 @@
         <th>Name</th>
         <th>Description</th>
         <th>IP Address</th>
+        <th></th>
       </tr>
       <tbody>
         <% @network_devices.each do |network_device| %>
           <tr>
-            <td title="<%= network_device.uuid %>"><samp><%= network_device.name %></samp></td>
-            <td><%= network_device.description %></td>
+            <td title="<%= network_device.uuid %>"><%= link_to network_device_path(network_device) do %>
+              <samp><%= network_device.name %></samp></td>
+            <% end %>
+            <td><span class="editable" data-update="<%= network_device_path(network_device) %>" data-param="description" data-id="<%= network_device.id %>"><%= network_device.description %></span></td>
             <td><%= network_device.ip_address %></td>
+            <td><%= link_to "SSH", "ssh://#{network_device.ip_address}", class: "btn btn-primary btn-sm" %></td>
           </tr>
         <% end %>
       </tbody>
