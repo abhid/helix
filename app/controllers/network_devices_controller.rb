@@ -7,10 +7,6 @@ class NetworkDevicesController < ApplicationController
     @network_device = NetworkDevice.find(params[:id])
   end
 
-  def edit
-
-  end
-
   def update
     @network_device = NetworkDevice.find(params[:id])
     @network_device.description = params[:description]

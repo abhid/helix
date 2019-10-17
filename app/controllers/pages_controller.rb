@@ -11,6 +11,11 @@ class PagesController < ApplicationController
       @mnt_ep = Rails.cache.fetch("mnt_session_#{@session.mac}") { $mnt.session_filterByIP(request.ip)["sessionParameters"] }
       @ers_ep = Rails.cache.fetch("ers_ep_#{@session.mac}") { $ers.ep_get($ers.ep_filterByMAC(@session.mac)["SearchResult"]["resources"][0]["id"])["ERSEndPoint"] }
 
+      prime_list = JSON.parse($prime.get("ClientDetails.json?.nocount=true&macAddress=\"#{@session.mac}\"").body)["queryResponse"]["entityId"]
+      if prime_list
+        @prime_info = JSON.parse($prime.get("ClientDetails/#{prime_list[0]["$"]}.json?.nocount=true").body)["queryResponse"]["entity"][0]["clientDetailsDTO"]
+      end
+
       @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
       render "endpoints/show"
     end

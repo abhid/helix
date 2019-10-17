@@ -87,6 +87,29 @@
         <a href="#" class="btn btn-success btn-sm mb-1 disabled">Sync with ISE</a>
     </div>
   </div>
+  <% if @prime_info %>
+    <div class="col-5">
+      <table class="table table-hover table-sm table-borderless">
+        <caption>Wireless Info</caption>
+        <tr>
+          <td>Connection Status</td>
+          <td><samp><%= @prime_info["ssid"] %></samp> <span class="badge badge-primary"><%= @prime_info["status"] %></span><span class="badge badge-success ml-2"><%= @prime_info["protocol"] %></span></td>
+        </tr>
+        <tr>
+          <td>Auth Info</td>
+          <td><samp><%= @prime_info["policyType"] %> / <%= @prime_info["encryptionCypher"] %></samp></td>
+        </tr>
+        <tr>
+          <td>AP Name</td>
+          <td><samp><%= @prime_info["apName"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><samp><%= @prime_info["location"] %></samp></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
 </div>
 <div class="row">
   <div class="col-4">
@@ -100,6 +123,7 @@
           <%= @session.nil? ? "No Active Session found" : raw(ap({active_session: @session}, {plain: true, indent: 2})) %>
           <span id="debugClipboard"><%= raw(ap({mnt_endpoint: @mnt_ep}, {plain: true, indent: 2})) %></span>
           <%= raw(ap({ers_endpoint: @ers_ep}, {plain: true, indent: 2})) %>
+          <%= raw(ap({prime_info: @prime_info}, {plain: true, indent: 2})) if @prime_info %>
         </div>
       </ul>
     </div>
