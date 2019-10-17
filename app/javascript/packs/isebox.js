@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
   // In-place editor
   // $(".editable").editable("update");
   $(".editable").each(function(idx, el) {
-    $(el).editable($(el).data("update_path"), {
+    $(el).editable($(el).data("update"), {
       id   : null,
       name : $(el).data("param"),
       method: 'PUT',

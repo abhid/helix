@@ -13,7 +13,7 @@ class EndpointsController < ApplicationController
 
     prime_list = JSON.parse($prime.get("ClientDetails.json?.nocount=true&macAddress=\"#{@mac_address}\"").body)["queryResponse"]["entityId"]
     if prime_list
-      @prime_info = JSON.parse($prime.get("ClientDetails/#{prime_list[0]["$"]}.json?.nocount=true").body)["queryResponse"]["entityId"]["clientDetailsDTO"]
+      @prime_info = JSON.parse($prime.get("ClientDetails/#{prime_list[0]["$"]}.json?.nocount=true").body)["queryResponse"]["entity"][0]["clientDetailsDTO"]
     end
     @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
   end
