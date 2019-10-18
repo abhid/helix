@@ -20,4 +20,15 @@ class PagesController < ApplicationController
       render "endpoints/show"
     end
   end
+
+  def livelog
+    ise_session = Pxgrid::ISE::Session.new($pxgrid)
+    @sessions = ise_session.getSessions((Time.now - 1.minutes).iso8601).sort_by { |session| session["timestamp"] }.reverse!
+  end
+
+  def streaminglog
+    ise_session = Pxgrid::ISE::Session.new($pxgrid)
+    @sessions = ise_session.getSessions(params[:timestamp]).sort_by { |session| session["timestamp"] }.reverse!
+    render partial: 'livelog_row', collection: @sessions, as: :session
+  end
 end

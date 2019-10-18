@@ -1,0 +1,20 @@
+<tr>
+  <td class="small"><time class="timeago" datetime="<%= session["timestamp"] %>"></time></td>
+  <% case session["state"] %>
+  <% when "AUTHENTICATED" %>
+    <td><span class="badge badge-success"><%= session["state"] %></span></td>
+  <% when "DISCONNECTED" %>
+    <td><span class="badge badge-warning"><%= session["state"] %></span></td>
+  <% when "STARTED" %>
+    <td><span class="badge badge-info"><%= session["state"] %></span></td>
+  <% else %>
+    <td><span class="badge badge-danger"><%= session["state"] %></span></td>
+  <% end %>
+  <td><%= session["username"] %></td>
+  <td><samp><%= session["ipAddresses"].sample %></samp></td>
+  <td><samp><%= session["callingStationId"] %></samp></td>
+  <td><%= session["nasPortType"] %></td>
+  <td><%= session["endpointProfile"] %></td>
+  <td><%= session["radiusFlowType"] %></td>
+  <td><%= session["ssid"] %></td>
+</tr>

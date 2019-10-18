@@ -6,6 +6,12 @@ PATH
       faraday (~> 0.17)
       nokogiri (~> 1.10)
 
+PATH
+  remote: /home/adevireddy/src/pxgrid
+  specs:
+    pxgrid (0.1.1)
+      faraday (~> 0.17)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -242,6 +248,7 @@ DEPENDENCIES
   pagy
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
+  pxgrid!
   rails (~> 6.0.0)
   rufus-scheduler
   sass-rails (~> 5)

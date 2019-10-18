@@ -56,6 +56,7 @@ gem 'faraday'
 gem 'nokogiri'
 gem 'pagy'
 gem 'isepick', path: "/home/adevireddy/src/isepick"
+gem 'pxgrid', path: "/home/adevireddy/src/pxgrid"
 gem 'awesome_print'
 gem 'sidekiq'
 gem 'rufus-scheduler'
