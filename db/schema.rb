@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_033113) do
+ActiveRecord::Schema.define(version: 2019_10_18_014327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,11 +66,20 @@ ActiveRecord::Schema.define(version: 2019_10_14_033113) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "network_device_groups_devices", force: :cascade do |t|
+    t.bigint "network_device_id"
+    t.bigint "network_device_group_id"
+    t.index ["network_device_group_id"], name: "index_network_device_groups_devices_on_network_device_group_id"
+    t.index ["network_device_id"], name: "index_network_device_groups_devices_on_network_device_id"
+  end
+
   create_table "network_devices", force: :cascade do |t|
     t.string "uuid"
     t.string "name"
     t.string "description"
+    t.string "type"
     t.string "ip_address"
+    t.boolean "updated", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -11,7 +11,7 @@
       <tbody>
         <% @network_device_groups.each do |nd_group| %>
           <tr>
-            <td title="<%= nd_group.uuid %>"><samp><%= nd_group.name %></samp></td>
+            <td title="<%= nd_group.uuid %>"><samp><%= link_to nd_group.name.gsub("#", " > "), network_device_group_path(nd_group) %></samp></td>
             <td><%= nd_group.description %></td>
           </tr>
         <% end %>

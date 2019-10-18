@@ -23,3 +23,17 @@
       <%= link_to "SSH to device", "ssh://#{@network_device.ip_address}", class: "btn btn-primary btn-sm" %>
   </div>
 </div>
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Device Groups
+      </div>
+      <div class="card-body">
+        <% @network_device.network_device_groups.each do |group| %>
+          <samp><%= link_to group.name.gsub("#", " > "), network_device_group_path(group) %></samp><br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

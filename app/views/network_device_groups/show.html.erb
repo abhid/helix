@@ -1,0 +1,34 @@
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Network Device Group Details
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">UUID</div>
+          <div class="col-8"><samp><%= @network_device_group.uuid %></samp></div>
+          <div class="col-4">Name</div>
+          <div class="col-8"><%= @network_device_group.name.gsub("#", " > ") %></div>
+          <div class="col-4">Description</div>
+          <div class="col-8"><span class="editable" data-update="<%= network_device_group_path(@network_device_group) %>" data-param="description" data-id="<%= @network_device_group.id %>"><%= @network_device_group.description %></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Devices
+      </div>
+      <div class="card-body">
+        <% @network_device_group.network_devices.each do |device| %>
+          <samp><%= link_to device.name, network_device_path(device) %></samp><br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
