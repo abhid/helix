@@ -1,0 +1,12 @@
+<div class="mt-4 row">
+  <div class="col-12">
+    <div class="btn-group">
+      <%= link_to "Radius Log", radius_livelog_path, class: "btn btn-primary #{current_page?(radius_livelog_path) ? "active" : nil}" %>
+      <%= link_to "Sessions Log", sessions_livelog_path, class: "btn btn-primary #{current_page?(sessions_livelog_path) ? "active" : nil}" %>
+    </div>
+    <div class="btn-group float-right">
+      <button type="button" class="btn btn-secondary btn-sm logpause"><i class="fas fa-play"></i></button>
+    </div>
+
+  </div>
+</div>

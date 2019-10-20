@@ -50,4 +50,9 @@ $(document).on('turbolinks:load', function() {
       }
     });
   });
+
+  // Livelog play/pause button
+  $(".logpause").on('click', function() {
+    $(this).find("i").toggleClass("fa-play").toggleClass("fa-pause")
+  })
 });
