@@ -19,11 +19,15 @@ class PagesController < ApplicationController
       end
 
       @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
-      render "endpoints/show", layout: "guest"
+      # Show a different layout based on current_user status
+      render "endpoints/show", layout: session[:user_id] ? "application" : "guest"
     end
   end
 
   def login
+    if session[:user_id]
+      redirect_back(fallback_location: root_path) and return
+    end
     if request.method == "POST"
       # Validate credentials
       ad_user = SimpleAD::User.authenticate(params[:username], params[:password], {server: Rails.configuration.ad["server"], base: Rails.configuration.ad["base"], domain: Rails.configuration.ad["domain"]})
@@ -33,7 +37,7 @@ class PagesController < ApplicationController
         user.name = ad_user.displayname[0]
         user.save
         session[:user_id] = user.id
-        redirect_to root_url and return
+        redirect_back(fallback_location: root_path) and return
       else
         # Invalid user. Kick them back to the login screen.
         flash[:error] = "Invalid username / password."

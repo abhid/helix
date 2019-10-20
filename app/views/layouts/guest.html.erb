@@ -20,13 +20,24 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand font-weight-bold" href="/">ISEbox</a>
+      <a class="navbar-brand font-weight-bold" href="/" data-turbolinks="false">ISEbox</a>
       <ul class="navbar-nav ml-auto mr-4 text-light">
-        <%= link_to "My Status", status_path, class: "nav-item btn btn-sm btn-primary ml-2" %>
+        <%= link_to "Login", login_path, class: "nav-item btn btn-sm btn-primary ml-2", data: { turbolinks: false } %>
       </ul>
     </nav>
     <div class="container-fluid">
       <%= yield %>
+    </div>
+    <div class="footer" style="position: absolute; display: block; width: 100%; line-height: 25px; bottom: 0px; background: #403866; color: #ffffff; text-align: right; padding: 5px 20px; font-weight: 700;">
+      ISEbox v0.1.6
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      &copy; 2019
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <i class="fab fa-github"></i> <a href="https://github.com/abhid/isebox" target="_blank" style="color: inherit;">abhid/isebox</a>
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <i class="fas fa-code"></i> <a href="https://github.com/abhid/isebox" target="_blank" style="color: inherit;">Contributors</a>
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <i class="fas fa-heart"></i> <a href="https://github.com/abhid/isebox" target="_blank" style="color: inherit;">Report a bug</a>
     </div>
   </body>
 </html>
