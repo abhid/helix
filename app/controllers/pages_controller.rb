@@ -35,9 +35,10 @@ class PagesController < ApplicationController
         # We have a valid user. Log them in.
         user = User.find_or_create_by(username: ad_user.samaccountname[0])
         user.name = ad_user.displayname[0]
+        user.last_login_ip = request.ip
         user.save
         session[:user_id] = user.id
-        redirect_back(fallback_location: root_path) and return
+        redirect_to root_path and return
       else
         # Invalid user. Kick them back to the login screen.
         flash[:error] = "Invalid username / password."

@@ -21,7 +21,7 @@
         <li class="list-group-item"><%= link_to "#{EndpointGroup.count} endpoint groups", endpoint_groups_path %> synced</li>
         <li class="list-group-item"><%= link_to "#{AuthorizationProfile.count} authorization profiles", authorization_profiles_path %> synced</li>
         <li class="list-group-item"><%= link_to "#{DownloadableAcl.count} downloadable ACLs", downloadable_acls_path %> synced</li>
-        <li class="list-group-item"><%= link_to "#{NetworkDevice.count} network devices", network_devices_path %> synced<time class="timeago badge badge-primary ml-1" datetime="<%=NetworkDevice.maximum(:updated_at).iso8601%>"></time></li>
+        <li class="list-group-item"><%= link_to "#{NetworkDevice.count} network devices", network_devices_path %> synced</li>
         <li class="list-group-item"><%= link_to "#{NetworkDeviceGroup.count} network device groups", network_devices_path %> synced</li>
       </ul>
     </div>

@@ -7,11 +7,13 @@ $(document).on('turbolinks:load', function() {
     maxHeight: 700,
     groupBy: 'category',
     showNoSuggestionNotice: true,
+    noCache: true,
     noSuggestionNotice: "No Results found",
     onSelect: function (suggestion) {
         Turbolinks.visit("/endpoints/"+suggestion.data["mac"]);
     },
     transformResult: function(response) {
+      console.log(response);
       output = {suggestions: []}
       response = JSON.parse(response);
       _.each(response["sessions"].slice(0, 6), function(result) {

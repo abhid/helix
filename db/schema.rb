@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_014327) do
     t.string "name"
     t.uuid "uuid"
     t.text "description"
-    t.string "mac"
+    t.macaddr "mac"
     t.bigint "endpoint_group_id"
     t.bigint "added_by_id"
     t.bigint "modified_by_id"
@@ -85,7 +85,8 @@ ActiveRecord::Schema.define(version: 2019_10_18_014327) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.string "mac"
+    t.macaddr "mac"
+    t.string "mac_text"
     t.string "ip_address"
     t.string "username"
     t.string "audit_session_id"
@@ -95,12 +96,14 @@ ActiveRecord::Schema.define(version: 2019_10_18_014327) do
     t.index ["audit_session_id"], name: "index_sessions_on_audit_session_id"
     t.index ["ip_address"], name: "index_sessions_on_ip_address"
     t.index ["mac"], name: "index_sessions_on_mac"
+    t.index ["mac_text"], name: "index_sessions_on_mac_text"
     t.index ["username"], name: "index_sessions_on_username"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "name"
+    t.inet "last_login_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
