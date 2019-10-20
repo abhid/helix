@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root "pages#index"
   match "/status", to: "pages#status", as: "status", via: [:get]
   match "/search", to: "search#search", as: "search", via: [:post, :get]
-  match "/livelog", to: "pages#livelog", as: "livelog", via: [:get]
-  match "/streaminglog", to: "pages#streaminglog", as: "streaminglog", via: [:get]
+  match "/live_sessions", to: "logging#sessions", as: "sessions_livelog", via: [:get]
+  match "/live_radius", to: "logging#radius", as: "radius_livelog", via: [:get]
+  match "/login", to: "pages#login", as: "login", via: [:get, :post]
+  match "/logout", to: "pages#logout", as: "logout", via: [:get]
   resources :endpoints, :endpoint_groups, :network_devices, :network_device_groups, :authorization_profiles, :downloadable_acls
 end

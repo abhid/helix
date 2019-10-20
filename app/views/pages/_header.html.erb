@@ -6,12 +6,15 @@
     <li class="nav-item"><%= render "pages/header_link", {title: "Downloadable ACLs", controller: "downloadable_acls", action: "index" }%></li>
     <li class="nav-item border-left"><%= render "pages/header_link", {title: "Network Devices", controller: "network_devices", action: "index" }%></li>
     <li class="nav-item"><%= render "pages/header_link", {title: "Network Device Groups", controller: "network_device_groups", action: "index" }%></li>
-    <li class="nav-item border-left"><%= render "pages/header_link", {title: "Session Live Log", controller: "pages", action: "livelog" }%></li>
+    <li class="nav-item border-left"><%= render "pages/header_link", {title: "Logging", controller: "logging", action: "sessions" }%></li>
     <li class="nav-item"><a href="#" class="nav-link">Exceptions</a></li>
   </ul>
   <ul class="navbar-nav ml-auto mr-4 text-light">
-    <li class="nav-item"><samp style="vertical-align: sub;"><%= current_user %>/<%=request.remote_ip%></samp></li>
+    <li class="nav-item"><abbr style="cursor: default;" title="<%= "#{current_user.username} @ #{request.remote_ip}" %>"><samp style="vertical-align: sub;"><%= current_user.username %></samp></abbr></li>
     <%= link_to "My Status", status_path, class: "nav-item btn btn-sm btn-primary ml-2" %>
+    <% if current_user %>
+      <%= link_to "Logout", logout_path, class: "nav-item btn btn-sm btn-danger ml-2" %>
+    <% end %>
   </ul>
   <div class="form-inline">
     <div class="input-group">

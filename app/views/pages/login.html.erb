@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ISEbox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+    <style media="screen">
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body,
+        html {
+          height: 100%;
+          font-family: Ubuntu, sans-serif;
+        }
+
+
+        input {
+          outline: none;
+          border: none;
+        }
+
+        input:focus,
+        textarea:focus {
+          border-color: transparent !important;
+        }
+
+        input::-webkit-input-placeholder {
+          color: #8f8fa1;
+        }
+
+        input:-moz-placeholder {
+          color: #8f8fa1;
+        }
+
+        input::-moz-placeholder {
+          color: #8f8fa1;
+        }
+
+        input:-ms-input-placeholder {
+          color: #8f8fa1;
+        }
+
+        button {
+          outline: none !important;
+          border: none;
+          background: transparent;
+        }
+
+        button:hover {
+          cursor: pointer;
+        }
+
+        .limiter {
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .container-login100 {
+          width: 100%;
+          min-height: 100vh;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 15px;
+
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .wrap-login100 {
+          width: 390px;
+          background: #fff;
+          border-radius: 10px;
+          position: relative;
+          padding: 20px;
+          box-shadow: 1px 1px 20px -10px #78909c;
+        }
+
+        .login100-form {
+          width: 100%;
+        }
+
+        .login100-form-title {
+          font-family: Ubuntu;
+          font-weight: 700;
+          font-size: 30px;
+          color: #403866;
+          line-height: 1.2;
+          text-transform: uppercase;
+          text-align: center;
+          padding-bottom: 51px;
+          width: 100%;
+          display: block;
+        }
+
+        .wrap-input100 {
+          width: 100%;
+          position: relative;
+          background-color: #e6e6e6;
+          border: 1px solid transparent;
+          border-radius: 3px;
+          margin-bottom: 16px;
+        }
+
+        .input100 {
+          font-family: Ubuntu;
+          font-weight: 700;
+          color: #403866;
+          line-height: 1.2;
+          font-size: 18px;
+
+          display: block;
+          width: 100%;
+          background: transparent;
+          height: 62px;
+          padding: 0 20px 0 38px;
+        }
+
+        .focus-input100 {
+          position: absolute;
+          display: block;
+          width: calc(100% + 2px);
+          height: calc(100% + 2px);
+          top: -1px;
+          left: -1px;
+          pointer-events: none;
+          border: 1px solid #827ffe;
+          border-radius: 3px;
+
+          visibility: hidden;
+          opacity: 0;
+
+          -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          transition: all 0.4s;
+
+          -webkit-transform: scaleX(1.1) scaleY(1.3);
+          -moz-transform: scaleX(1.1) scaleY(1.3);
+          -ms-transform: scaleX(1.1) scaleY(1.3);
+          -o-transform: scaleX(1.1) scaleY(1.3);
+          transform: scaleX(1.1) scaleY(1.3);
+        }
+
+        .input100:focus+.focus-input100 {
+          visibility: visible;
+          opacity: 1;
+
+          -webkit-transform: scale(1);
+          -moz-transform: scale(1);
+          -ms-transform: scale(1);
+          -o-transform: scale(1);
+          transform: scale(1);
+        }
+
+        .container-login100-form-btn {
+          width: 100%;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 17px;
+        }
+
+        .login100-form-btn {
+          font-family: Ubuntu;
+          font-weight: 700;
+          font-size: 16px;
+          color: #fff;
+          line-height: 1.2;
+          text-transform: uppercase;
+
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 20px;
+          width: 100%;
+          height: 62px;
+          background-color: #827ffe;
+          border-radius: 3px;
+
+          -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          transition: all 0.4s;
+        }
+
+        .login100-form-btn:hover {
+          background-color: #403866;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <%= form_with class: "login100-form validate-form flex-sb flex-w" do %>
+            <span class="login100-form-title">
+              ISEbox
+            </span>
+            <%= flash[:error] %>
+
+            <div class="wrap-input100 validate-input" data-validate="Username is required">
+              <%= text_field_tag :username, "", placeholder: "Username" ,class: "input100" %>
+              <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Password is required">
+              <%= password_field_tag :password, "", placeholder: "Password", class: "input100" %>
+              <span class="focus-input100"></span>
+            </div>
+            <div class="container-login100-form-btn">
+              <%= submit_tag :login, class: "login100-form-btn" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

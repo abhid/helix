@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user, only: [:login, :status]
+
   def index
 
   end
@@ -17,13 +19,32 @@ class PagesController < ApplicationController
       end
 
       @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
-      render "endpoints/show"
+      render "endpoints/show", layout: "guest"
     end
   end
 
-  def livelog
-    ise_session = Pxgrid::ISE::Session.new($pxgrid)
-    @sessions = ise_session.getSessions((Time.now - 1.minutes).iso8601).sort_by { |session| session["timestamp"] }.reverse!
+  def login
+    if request.method == "POST"
+      # Validate credentials
+      ad_user = SimpleAD::User.authenticate(params[:username], params[:password], {server: Rails.configuration.ad["server"], base: Rails.configuration.ad["base"], domain: Rails.configuration.ad["domain"]})
+      if ad_user
+        # We have a valid user. Log them in.
+        user = User.find_or_create_by(username: ad_user.samaccountname[0])
+        user.name = ad_user.displayname[0]
+        user.save
+        session[:user_id] = user.id
+        redirect_to root_url and return
+      else
+        # Invalid user. Kick them back to the login screen.
+        flash[:error] = "Invalid username / password."
+      end
+    end
+    render layout: false
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to login_path
   end
 
   def streaminglog

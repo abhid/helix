@@ -19,7 +19,12 @@
   </head>
 
   <body>
-    <%= render "pages/header"%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand font-weight-bold" href="/">ISEbox</a>
+      <ul class="navbar-nav ml-auto mr-4 text-light">
+        <%= link_to "My Status", status_path, class: "nav-item btn btn-sm btn-primary ml-2" %>
+      </ul>
+    </nav>
     <div class="container-fluid">
       <%= yield %>
     </div>

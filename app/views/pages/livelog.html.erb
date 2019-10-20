@@ -1,6 +1,6 @@
-<div class="row mt-4">
+<div class="row mt-4" data-turbolinks="false">
   <div class="col-10">
-    <table class="table table-hover table-sm">
+    <table id="livelog" class="table table-hover table-sm">
       <tbody>
         <% @sessions.each do |session| %>
           <%= render "livelog_row", {session: session} %>
@@ -13,13 +13,16 @@
 <%= raw(ap(@sessions, {plain: true})) if params[:action] == "livelog"%>
 
 <script type="text/javascript">
-  window.setInterval(function(){
+  var livereloadInterval = window.setInterval(function(){
+    if ($("table#livelog").length == 0) {
+      window.clearInterval(livereloadInterval);
+    }
     $.get("/streaminglog?timestamp=" + $($(".timeago")[0]).attr("datetime"), function(data) {
       // console.log("[" + Date.now() + "] f");
       data = $(data).slideDown(600).hide().fadeIn("slow")
-      $("table tbody").prepend(data);
+      $("table#livelog tbody").prepend(data);
       timeago().render(document.querySelectorAll('.timeago'));
-      $("table tr").slice(500).remove()
+      $("table#livelog tr").slice(500).remove()
     });
   }, 2000);
 </script>

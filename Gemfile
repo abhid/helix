@@ -57,6 +57,8 @@ gem 'nokogiri'
 gem 'pagy'
 gem 'isepick', path: "/home/adevireddy/src/isepick"
 gem 'pxgrid', path: "/home/adevireddy/src/pxgrid"
+gem 'simple_ad', path: "/home/adevireddy/src/simple_ad"
 gem 'awesome_print'
 gem 'sidekiq'
 gem 'rufus-scheduler'
+gem 'net-ldap'
