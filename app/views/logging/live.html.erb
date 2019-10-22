@@ -1,1 +1,50 @@
-<%= render "log_header" %>
+<div class="row mt-4" data-turbolinks="false">
+  <div class="col-12">
+    <span class="fas fa-filter text-muted"></span>
+    <div class="btn-group btn-group-toggle ml-2 filters" data-toggle="button">
+      <button class="btn btn-secondary btn-sm disabled">STARTED</button>
+      <!-- <button class="btn btn-secondary btn-sm"">AUTHENTICATING</button> -->
+      <button class="btn btn-secondary btn-sm disabled">AUTHENTICATED</button>
+      <!-- <button class="btn btn-secondary btn-sm"">POSTURED</button> -->
+      <button class="btn btn-secondary btn-sm disabled">DISCONNECTED</button>
+    </div>
+    <div class="btn-group btn-group-toggle ml-2 filters" data-toggle="button">
+      <button class="btn btn-secondary btn-sm disabled">Ethernet</button>
+      <button class="btn btn-secondary btn-sm disabled">Wireless</button>
+    </div>
+    <div class="btn-group btn-group-toggle ml-2 filters" data-toggle="button">
+      <button class="btn btn-secondary btn-sm disabled">802.1x</button>
+      <button class="btn btn-secondary btn-sm disabled">MAB</button>
+    </div>
+    <!-- <button class="btn btn-secondary logpause float-right btn-sm" style="font-size: 0.675em;"><i class="fas fa-pause"></i></button> -->
+  </div>
+  <div class="col-12 mt-4">
+    <table id="livelog" class="table table-hover table-sm">
+      <tbody>
+        <% @sessions.each do |session| %>
+          <%= render "live_row", {session: session} %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= raw(ap(@sessions, {plain: true})) if params[:action] == "livelog"%>
+
+<!-- <script type="text/javascript">
+  window.liveLog = true;
+  var livereloadInterval = window.setInterval(function(){
+    if (window.liveLog) {
+      if ($("table#livelog").length == 0) {
+        window.clearInterval(livereloadInterval);
+      }
+      $.get("/live_stream?timestamp=" + $($(".timeago")[0]).attr("datetime"), function(data) {
+        // console.log("[" + Date.now() + "] f");
+        data = $(data).addClass("ajax_row");
+        $("table#livelog tbody").prepend(data.delay(1000).addClass("ajax_row_final"));
+        timeago().render(document.querySelectorAll('.timeago'));
+        $("table#livelog tr").slice(500).remove()
+      });
+    }
+  }, 5000);
+</script> -->

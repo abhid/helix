@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  include ApplicationHelper
+  
   before_action :authenticate_user
 
   private

@@ -4,11 +4,9 @@
       No active sessions found
     </div>
     <div class="card-body">
-      We couldn't find an ISE Session for your IP Address (<samp><%= request.ip %></samp>).
+      We couldn't find a session in ISE for your IP Address (<samp><%= request.ip %></samp>).
       <br/>
-      If you just connected to the network, please try again in a few minutes.
-      <br/>
-      <i>The Active Sessions were last synced <time class="timeago" datetime="<%=Session.maximum(:updated_at).iso8601%>"></time></i>
+      Your switchport might not have ISE enabled on it.
     </div>
   </div>
 </div>

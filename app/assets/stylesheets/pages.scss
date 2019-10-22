@@ -50,3 +50,32 @@ html body {
   -o-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
 }
+
+@keyframes ajaxContent {
+  0% {
+    background-color: inherit;
+  }
+
+  50% {
+    background-color: #ffe082;
+  }
+
+  100% {
+    background-color: inherit;
+  }
+}
+
+ .ajax_row {
+  animation: ajaxContent ease;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: ajaxContent;
+  animation-duration: 2s;
+ }
+//
+// .ajax_row_final {
+//   background-color: inherit;
+//   -webkit-transition: background-color 400ms linear;
+//   -ms-transition: background-color 400ms linear;
+//   transition: background-color 400ms linear;
+// }

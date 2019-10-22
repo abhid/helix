@@ -1,56 +1,60 @@
 <div class="row mt-4">
   <div class="col-5">
-    <table class="table table-hover table-sm table-borderless">
-      <caption>Active Session Info</caption>
-      <tr>
-        <td>IP Address</td>
-        <td><samp><%= @mnt_ep["framed_ip_address"] %></samp></td>
-      </tr>
-      <tr>
-        <td>MAC Address</td>
-        <td><samp><%= @mnt_ep["calling_station_id"] %></samp>
-          <% unless @session.active? %>
-            <span class="badge badge-danger ml-2">INACTIVE</span>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>Username</td>
-        <td><samp><%= @mnt_ep["user_name"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Network Location</td>
-        <td><samp><%= @mnt_ep["network_device_name"] %> | <%= @mnt_ep["nas_port_id"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Session passed</td>
-        <td><samp><%= @mnt_ep["passed"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Authentication Method / Protocol</td>
-        <td><samp><%= @mnt_ep["authentication_method"] %> / <%= @mnt_ep["authentication_protocol"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Authorization Profile</td>
-        <td><samp><%= @mnt_ep["selected_azn_profiles"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Identity Store</td>
-        <td><samp><%= @mnt_ep["identity_store"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Location</td>
-        <td><samp><%= @mnt_ep["location"].gsub("#", " / ") %></samp></td>
-      </tr>
-      <tr>
-        <td>Endpoint Policy</td>
-        <td><samp><%= @mnt_ep["endpoint_policy"] %></samp></td>
-      </tr>
-      <tr>
-        <td>Downloadable ACL</td>
-        <td><samp><%= @mnt_ep["dacl"] %></samp></td>
-      </tr>
-    </table>
+    <% if @mnt_ep %>
+      <table class="table table-hover table-sm table-borderless">
+        <caption>Active Session Info</caption>
+        <tr>
+          <td>IP Address</td>
+          <td><samp><%= @mnt_ep["framed_ip_address"] %></samp></td>
+        </tr>
+        <tr>
+          <td>MAC Address</td>
+          <td><samp><%= @mnt_ep["calling_station_id"] %></samp>
+            <% unless @session.active? %>
+              <span class="badge badge-danger ml-2">INACTIVE</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td><samp><%= @mnt_ep["user_name"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Network Location</td>
+          <td><samp><%= @mnt_ep["network_device_name"] %> | <%= @mnt_ep["nas_port_id"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Session passed</td>
+          <td><samp><%= @mnt_ep["passed"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Authentication Method / Protocol</td>
+          <td><samp><%= @mnt_ep["authentication_method"] %> / <%= @mnt_ep["authentication_protocol"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Authorization Profile</td>
+          <td><samp><%= @mnt_ep["selected_azn_profiles"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Identity Store</td>
+          <td><samp><%= @mnt_ep["identity_store"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><samp><%= @mnt_ep["location"].gsub("#", " / ") %></samp></td>
+        </tr>
+        <tr>
+          <td>Endpoint Policy</td>
+          <td><samp><%= @mnt_ep["endpoint_policy"] %></samp></td>
+        </tr>
+        <tr>
+          <td>Downloadable ACL</td>
+          <td><samp><%= @mnt_ep["dacl"] %></samp></td>
+        </tr>
+      </table>
+    <% else %>
+      <strong>No Active Sessions found</strong>
+    <% end %>
   </div>
   <div class="col-5">
     <table class="table table-hover table-sm table-borderless">

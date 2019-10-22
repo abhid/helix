@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_014327) do
+ActiveRecord::Schema.define(version: 2019_10_21_024723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 2019_10_18_014327) do
     t.boolean "updated", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ouis", force: :cascade do |t|
+    t.macaddr "oui"
+    t.string "vendor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["oui"], name: "index_ouis_on_oui"
+    t.index ["vendor"], name: "index_ouis_on_vendor"
   end
 
   create_table "sessions", force: :cascade do |t|

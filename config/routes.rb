@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   match "/search", to: "search#search", as: "search", via: [:post, :get]
   # All the livelog routes
   match "/live", to: "logging#live", as: "livelog", via: [:get]
-  match "/live_sessions", to: "logging#sessions", as: "sessions_livelog", via: [:get, :post]
-  match "/live_radius", to: "logging#radius", as: "radius_livelog", via: [:get, :post]
+  match "/live_stream", to: "logging#live_stream", as: "livelog_stream", via: [:get, :post]
   # User management routes
   match "/login", to: "pages#login", as: "login", via: [:get, :post]
   match "/logout", to: "pages#logout", as: "logout", via: [:get]

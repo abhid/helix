@@ -17,3 +17,6 @@ sch.every '30m', :overlap => false do
   SyncNdgJob.perform_later
   SyncNdJob.perform_later
 end
+
+# Keep at this
+ProcessWsJob.perform_later

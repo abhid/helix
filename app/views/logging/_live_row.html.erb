@@ -11,8 +11,8 @@
     <td><span class="badge badge-danger"><%= session["state"] %></span></td>
   <% end %>
   <td><%= session["username"] %></td>
-  <td><samp><%= session["ipAddresses"].sample %></samp></td>
-  <td><samp><%= session["callingStationId"] %></samp></td>
+  <td><samp><%= session["ipAddresses"].sample if session["ipAddresses"] %></samp></td>
+  <td><samp><%= link_to session["callingStationId"], endpoint_path(session["callingStationId"]) %></samp><span class="badge badge-info badge-xs ml-2"><%= Oui.find_by_mac(session["callingStationId"]).vendor %></span></td>
   <td><%= session["nasPortType"] %></td>
   <td><%= session["endpointProfile"] %></td>
   <td><%= session["radiusFlowType"] %></td>
