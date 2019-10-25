@@ -1,1 +1,1 @@
-<a href="<%= url_for(controller: controller, action: action) %>" class="nav-link <%= params[:controller] == controller ? "active" : ""%>"><%= title %></a>
+<a href="<%= url_for(controller: controller, action: action) %>" class="nav-link <%= current_page?(controller: controller, action: action) ? "active" : ""%>"><%= title %></a>

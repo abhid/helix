@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'benchmark'
+
 time = Benchmark.realtime do
   f = open("https://linuxnet.ca/ieee/oui/nmap-mac-prefixes")
   f.each_line do |entry|

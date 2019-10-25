@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   # User management routes
   match "/login", to: "pages#login", as: "login", via: [:get, :post]
   match "/logout", to: "pages#logout", as: "logout", via: [:get]
+  # Settings page
+  match "/settings", to: "pages#settings", as: "settings", via: [:post, :get]
   # Resources
   resources :endpoints, :endpoint_groups, :network_devices, :network_device_groups, :authorization_profiles, :downloadable_acls
 end
