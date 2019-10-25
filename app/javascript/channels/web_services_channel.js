@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-$(document).on('turbolinks:load', function() {
+// $(document).on('turbolinks:load', function() {
   consumer.subscriptions.create({channel: "WebServicesChannel"}, {
     connected() {
       // Called when the subscription is ready for use on the server
@@ -13,11 +13,11 @@ $(document).on('turbolinks:load', function() {
 
     received(data) {
       // Called when there's incoming data on the websocket for this channel
-      // console.dir(data);
       data = $(data).addClass("ajax_row");
+      // console.dir(data);
       $("table#livelog tbody").prepend(data);
       timeago().render(document.querySelectorAll('.timeago'));
       $("table#livelog tr").slice(500).remove()
     }
   });
-});
+// });

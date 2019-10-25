@@ -13,10 +13,13 @@ sch.every '15m', :overlap => false do
   SyncEigJob.perform_later
 end
 
-sch.every '30m', :overlap => false do
+sch.every '60m', :overlap => false do
   SyncNdgJob.perform_later
   SyncNdJob.perform_later
 end
 
 # Keep at this
 ProcessWsJob.perform_later
+
+# Prevent this from exiting right away
+sch.join
