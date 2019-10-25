@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Isebox
+module Helix
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -18,7 +18,7 @@ module Isebox
     config.ise = config_for(:cisco_ise)
     config.prime = config_for(:cisco_prime)
     config.ad = config_for(:ad)
-    
+
     # Enable sidekiq as the job queue
     config.active_job.queue_adapter = :sidekiq
   end

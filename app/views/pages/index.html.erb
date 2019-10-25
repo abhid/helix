@@ -2,7 +2,7 @@
   <div class="col-3">
     <div class="card">
       <div class="card-header font-weight-bold">
-        ISEbox Status
+        helix Status
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -17,7 +17,7 @@
           <%= Session.where(active: true).count %> active sessions tracked
           <time class="timeago badge badge-primary ml-1" datetime="<%=Session.maximum(:updated_at).iso8601%>"></time>
         </li>
-        <li class="list-group-item"><%= Endpoint.count %> endpoints tracked in ISEbox</li>
+        <li class="list-group-item"><%= Endpoint.count %> endpoints tracked in helix</li>
         <li class="list-group-item"><%= link_to "#{EndpointGroup.count} endpoint groups", endpoint_groups_path %> synced</li>
         <li class="list-group-item"><%= link_to "#{AuthorizationProfile.count} authorization profiles", authorization_profiles_path %> synced</li>
         <li class="list-group-item"><%= link_to "#{DownloadableAcl.count} downloadable ACLs", downloadable_acls_path %> synced</li>

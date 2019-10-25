@@ -35,7 +35,7 @@ class WebSocketStomp:
         frame = StompFrame()
         frame.set_command("SUBSCRIBE")
         frame.set_header('destination', topic)
-        frame.set_header('id', 'isebox-client')
+        frame.set_header('id', 'helix-client')
         out = StringIO()
         frame.write(out)
         await self.ws.send(out.getvalue().encode('utf-8'))

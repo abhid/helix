@@ -10,12 +10,14 @@ require 'benchmark'
 
 time = Benchmark.realtime do
   f = open("https://linuxnet.ca/ieee/oui/nmap-mac-prefixes")
+  oui_list = []
   f.each_line do |entry|
     oui, vendor = entry.split(" ")
-    rec = Oui.find_or_create_by(oui: "#{oui}000000")
+    rec = Oui.find_or_initialize_by(oui: "#{oui}000000")
     rec.vendor = vendor
-    rec.save
+    oui_list << rec
   end
+  Oui.import oui_list
 end
 
 puts "Imported #{Oui.count} OUIs in #{"%.2f" % time} s"
