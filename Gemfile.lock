@@ -1,19 +1,22 @@
-PATH
-  remote: /home/adevireddy/src/isepick
+GIT
+  remote: git@webgit01.medcampus.org:ADevireddy/isepick.git
+  revision: fb6a3cb2964bac61d58759cc4ea161ab3c5d2ad0
   specs:
     isepick (0.1.1)
       activesupport (~> 6.0.0)
       faraday (~> 0.17)
       nokogiri (~> 1.10)
 
-PATH
-  remote: /home/adevireddy/src/pxgrid
+GIT
+  remote: git@webgit01.medcampus.org:ADevireddy/pxgrid.git
+  revision: 8880d35bd04d5e7528714306bf0b3ff1de7f5726
   specs:
     pxgrid (0.1.1)
       faraday (~> 0.17)
 
-PATH
-  remote: /home/adevireddy/src/simple_ad
+GIT
+  remote: git@webgit01.medcampus.org:ADevireddy/simple_ad.git
+  revision: c6416431bc85fe581df6f1681e2949b735192e33
   specs:
     simple_ad (0.1.0)
       net-ldap
@@ -65,6 +68,8 @@ GEM
     activerecord (6.0.0)
       activemodel (= 6.0.0)
       activesupport (= 6.0.0)
+    activerecord-import (1.0.3)
+      activerecord (>= 3.2)
     activestorage (6.0.0)
       actionpack (= 6.0.0)
       activejob (= 6.0.0)
@@ -78,12 +83,29 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrussh (1.4.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     awesome_print (1.8.0)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    capistrano (3.11.2)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.6.0)
+      capistrano (~> 3.1)
+    capistrano-rails (1.4.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano-scm-gitcopy (0.1.5)
+      capistrano (~> 3.0)
     capybara (3.29.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -126,12 +148,15 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
+    minitest (5.13.0)
     msgpack (1.3.1)
     multipart-post (2.1.1)
     net-ldap (0.16.1)
+    net-scp (2.0.0)
+      net-ssh (>= 2.6.5, < 6.0.0)
+    net-ssh (5.2.0)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     pagy (3.6.0)
     pg (1.1.4)
@@ -195,7 +220,7 @@ GEM
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sidekiq (6.0.2)
+    sidekiq (6.0.3)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
       rack-protection (>= 2.0.0)
@@ -211,6 +236,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sshkit (1.20.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -237,15 +265,20 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.0)
+    zeitwerk (2.2.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   awesome_print
   bootsnap (>= 1.4.2)
   byebug
+  capistrano
+  capistrano-rails
+  capistrano-rbenv
+  capistrano-scm-gitcopy
   capybara (>= 2.15)
   faraday
   isepick!

@@ -8,7 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-require("packs/isebox")
+require("packs/helix")
 
 // Expose jQuery to the DOM
 import $ from 'jquery';

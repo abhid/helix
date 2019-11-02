@@ -31,6 +31,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem "capistrano-scm-gitcopy", require: false
 end
 
 group :development do
@@ -55,10 +59,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faraday'
 gem 'nokogiri'
 gem 'pagy'
-gem 'isepick', path: "/home/adevireddy/src/isepick"
-gem 'pxgrid', path: "/home/adevireddy/src/pxgrid"
-gem 'simple_ad', path: "/home/adevireddy/src/simple_ad"
+gem 'isepick', git: "git@webgit01.medcampus.org:ADevireddy/isepick.git"
+gem 'pxgrid', git: "git@webgit01.medcampus.org:ADevireddy/pxgrid.git"
+gem 'simple_ad', git: "git@webgit01.medcampus.org:ADevireddy/simple_ad.git"
 gem 'awesome_print'
 gem 'sidekiq'
 gem 'rufus-scheduler'
 gem 'net-ldap'
+gem 'activerecord-import'
