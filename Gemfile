@@ -59,9 +59,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faraday'
 gem 'nokogiri'
 gem 'pagy'
-gem 'isepick', path: "/home/adevireddy/src/isepick"
-gem 'pxgrid', path: "/home/adevireddy/src/pxgrid"
-gem 'simple_ad', path: "/home/adevireddy/src/simple_ad"
+gem 'isepick', git: "git@webgit01.medcampus.org:ADevireddy/isepick.git"
+gem 'pxgrid', git: "git@webgit01.medcampus.org:ADevireddy/pxgrid.git"
+gem 'simple_ad', git: "git@webgit01.medcampus.org:ADevireddy/simple_ad.git"
 gem 'awesome_print'
 gem 'sidekiq'
 gem 'rufus-scheduler'

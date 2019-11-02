@@ -43,7 +43,7 @@ server "netmon05", user: "deploy", roles: %w{app db web}
 # --------------
  set :ssh_options, {
    keys: %w(~/.ssh/deploy@netmon05),
-   forward_agent: false,
+   forward_agent: true,
    auth_methods: %w(publickey)
  }
 #

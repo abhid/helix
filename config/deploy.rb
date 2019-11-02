@@ -2,12 +2,7 @@
 lock "~> 3.11.2"
 
 set :application, "helix"
-set :scm, :gitcopy
-# set :repo_url, "/home/adevireddy/src/helix"
-# set :local_repository, "/home/adevireddy/src/helix"
-# set :copy_strategy, :export
-# set :copy_exclude, ".git/*"
-# set :copy_via, :scp
+set :repo_url, "git@webgit01.medcampus.org:ADevireddy/helix.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
