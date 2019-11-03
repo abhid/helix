@@ -27,7 +27,7 @@ set :deploy_to, "/home/deploy/helix"
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { secret_key_base: "cfc5e8c1e22d4e7c1be85f38c933d741f8c29632ef67741f48342f16f2728df8a492e3ead1a147afd65a10975597a1c01257c425130584b2843a10a95ce733b7" }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
