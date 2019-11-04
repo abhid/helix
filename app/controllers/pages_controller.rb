@@ -6,9 +6,9 @@ class PagesController < ApplicationController
   end
 
   def status
-    @session = Session.find_by(ip_address: request.remote_ip)
+    @session = Session.find_by(ip_address: request.ip)
     unless @session
-      session = $mnt.session_filterByIP(request.remote_ip)["sessionParameters"]
+      session = $mnt.session_filterByIP(request.ip)["sessionParameters"]
       if session
         @session = Session.find_or_create_by(mac: session["calling_station_id"])
         @session.active = true
@@ -25,7 +25,7 @@ class PagesController < ApplicationController
     if @session.nil?
       render "no_entry.html.erb", layout: "guest"
     else
-      @mnt_ep = Rails.cache.fetch("mnt_session_#{@session.mac}") { $mnt.session_filterByIP(request.remote_ip)["sessionParameters"] }
+      @mnt_ep = Rails.cache.fetch("mnt_session_#{@session.mac}") { $mnt.session_filterByIP(request.ip)["sessionParameters"] }
       @ers_ep = Rails.cache.fetch("ers_ep_#{@session.mac}") { $ers.ep_get($ers.ep_filterByMAC(@session.mac)["SearchResult"]["resources"][0]["id"])["ERSEndPoint"] }
 
       prime_list = JSON.parse($prime.get("ClientDetails.json?.nocount=true&macAddress=\"#{@session.mac}\"").body)["queryResponse"]["entityId"]
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
         # We have a valid user. Log them in.
         user = User.find_or_create_by(username: ad_user.samaccountname[0])
         user.name = ad_user.displayname[0]
-        user.last_login_ip = request.remote_ip
+        user.last_login_ip = request.ip
         user.save
         session[:user_id] = user.id
         redirect_to root_path and return
