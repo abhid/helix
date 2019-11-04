@@ -10,7 +10,7 @@ class SyncNdJob < ApplicationJob
       r.set "#{self.class}_execute", true
       r.expire "#{self.class}_execute", 30
     end
-    
+
     # Sync ND
     $ers.nd_getAll().each do |ers_nd|
       nd = NetworkDevice.find_or_create_by(uuid: ers_nd["id"])
