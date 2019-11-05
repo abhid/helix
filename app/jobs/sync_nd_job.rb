@@ -23,7 +23,10 @@ class SyncNdJob < ApplicationJob
       end
       if (nd_detail["NetworkDeviceGroupList"].length > 0)
         nd_detail["NetworkDeviceGroupList"].each do |group_name|
-          nd.network_device_groups << NetworkDeviceGroup.find_by(name: group_name)
+          ndg = NetworkDeviceGroup.find_by(name: group_name)
+          if ndg
+            nd.network_device_groups << NetworkDeviceGroup.find_by(name: group_name) unless nd.network_device_groups.include?(ndg)
+          end
         end
       end
       nd.save
