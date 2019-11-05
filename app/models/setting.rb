@@ -1,10 +1,11 @@
 class Setting < ApplicationRecord
   def self.[](namespace)
-    Setting.find_by(namespace: namespace)
-  end
-  def self.[] = (namespace, value)
     setting = Setting.find_by(namespace: namespace)
-    setting.hash = value
+    setting ? setting.value : nil
+  end
+  def self.[]=(namespace, value)
+    setting = Setting.find_or_initialize_by(namespace: namespace)
+    setting.value = value
     setting.save
   end
   def <<(x)

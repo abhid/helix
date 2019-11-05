@@ -1,1 +1,1 @@
-$pxgrid = Pxgrid::Client.new(Rails.configuration.ise["pan_ip"], "isebox", {username: Rails.configuration.ise["pxgrid_username"], password: Rails.configuration.ise["pxgrid_password"]})
+$pxgrid = Pxgrid::Client.new(Setting["ise"]["pan"], "isebox", {username: Setting["ise"]["pxgrid_username"], password: Setting["ise"]["pxgrid_password"]})

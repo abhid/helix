@@ -8,16 +8,26 @@
 require 'open-uri'
 require 'benchmark'
 
-time = Benchmark.realtime do
-  f = open("https://linuxnet.ca/ieee/oui/nmap-mac-prefixes")
-  oui_list = []
-  f.each_line do |entry|
-    oui, vendor = entry.split(" ")
-    rec = Oui.find_or_initialize_by(oui: "#{oui}000000")
-    rec.vendor = vendor
-    oui_list << rec
+# Import OUIs
+if ENV.fetch("IMPORT_OUI") { false }
+  time = Benchmark.realtime do
+    f = open("https://linuxnet.ca/ieee/oui/nmap-mac-prefixes")
+    oui_list = []
+    f.each_line do |entry|
+      oui, vendor = entry.split(" ")
+      rec = Oui.find_or_initialize_by(oui: "#{oui}000000")
+      rec.vendor = vendor
+      oui_list << rec
+    end
+    Oui.import oui_list
   end
-  Oui.import oui_list
+  puts "Imported #{Oui.count} OUIs in #{"%.2f" % time} s"
 end
 
-puts "Imported #{Oui.count} OUIs in #{"%.2f" % time} s"
+# Import Settings
+ad = {server: ENV["AD_SERVER"], base: ENV["AD_BASE"] ,domain: ENV["AD_DOMAIN"]}
+Setting["ad"] = ad
+ise = {mnt: ENV["ISE_MNT"], pan: ENV["ISE_PAN"], ise_username: ENV["ISE_USERNAME"], ise_password: ENV["ISE_PASSWORD"], pxgrid_username: ENV["PXGRID_USERNAME"], pxgrid_password: ENV["PXGRID_PASSWORD"]}
+Setting["ise"] = ise
+prime = {server: ENV["PRIME_IP"], username: ENV["PRIME_USERNAME"], password: ENV["PRIME_PASSWORD"]}
+Setting["prime"] = prime

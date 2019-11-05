@@ -1,5 +1,5 @@
-$prime = Faraday.new("https://#{Rails.configuration.prime["prime_ip"]}/webacs/api/v4/data/") do |conn|
-  conn.basic_auth(Rails.configuration.prime["prime_username"], Rails.configuration.prime["prime_password"])
+$prime = Faraday.new("https://#{Setting["prime"]["server"]}/webacs/api/v4/data/") do |conn|
+  conn.basic_auth(Setting["prime"]["username"], Setting["prime"]["password"])
   conn.adapter Faraday.default_adapter
   conn.ssl[:verify] = false
 end

@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: helix_production
-  username: helix
+  username: <%= ENV['HELIX_DATABASE_USERNAME'] %>
   password: <%= ENV['HELIX_DATABASE_PASSWORD'] %>

@@ -1,8 +1,0 @@
-production:
-  server: "medcampus.org"
-  base: "DC=medcampus,DC=org"
-  domain: "medcampus.org"
-development:
-  server: "medcampus.org"
-  base: "DC=medcampus,DC=org"
-  domain: "medcampus.org"

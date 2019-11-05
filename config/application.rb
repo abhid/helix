@@ -15,9 +15,6 @@ module Helix
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.ise = config_for(:cisco_ise)
-    config.prime = config_for(:cisco_prime)
-    config.ad = config_for(:ad)
 
     # Enable sidekiq as the job queue
     config.active_job.queue_adapter = :sidekiq

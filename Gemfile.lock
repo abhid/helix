@@ -118,6 +118,10 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.5)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     et-orbi (1.2.2)
       tzinfo
@@ -280,6 +284,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano-scm-gitcopy
   capybara (>= 2.15)
+  dotenv-rails
   faraday
   isepick!
   jbuilder (~> 2.7)

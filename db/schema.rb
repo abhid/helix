@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_031127) do
 
   create_table "settings", force: :cascade do |t|
     t.string "namespace"
-    t.json "hash"
+    t.json "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

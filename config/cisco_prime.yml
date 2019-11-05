@@ -1,8 +1,0 @@
-production:
-  prime_ip: "10.30.7.117"
-  prime_username: "prime-api"
-  prime_password: "9Ra&N82x5CHt%1P2"
-development:
-  prime_ip: "10.30.7.117"
-  prime_username: "prime-api"
-  prime_password: "9Ra&N82x5CHt%1P2"

@@ -45,7 +45,7 @@ class PagesController < ApplicationController
     end
     if request.method == "POST"
       # Validate credentials
-      ad_user = SimpleAD::User.authenticate(params[:username], params[:password], {server: Rails.configuration.ad["server"], base: Rails.configuration.ad["base"], domain: Rails.configuration.ad["domain"]})
+      ad_user = SimpleAD::User.authenticate(params[:username], params[:password], {server: Setting["ad"]["server"], base: Setting["ad"]["base"], domain: Setting["ad"]["domain"]})
       if ad_user
         # We have a valid user. Log them in.
         user = User.find_or_create_by(username: ad_user.samaccountname[0])
