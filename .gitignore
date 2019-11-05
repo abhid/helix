@@ -29,6 +29,10 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/__pycache__/
+
+# Ignore the pycache compiled files for python
+**/__pycache__/
+
+# Ignore the dotenv files that are env specific
 .env.development
 .env.production
