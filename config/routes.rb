@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   match "/settings", to: "pages#settings", as: "settings", via: [:post, :get]
   # Resources
   resources :endpoints, :endpoint_groups, :network_devices, :network_device_groups, :authorization_profiles, :downloadable_acls
+
+  # Async resources
+  get "/endpoint/show/infoblox", to: "endpoints#show_infoblox", as: "endpoint_infoblox"
+  get "/endpoint/show/ise_mnt", to: "endpoints#show_ise_mnt", as: "endpoint_ise_mnt"
+  get "/endpoint/show/ise_ers", to: "endpoints#show_ise_ers", as: "endpoint_ise_ers"
+  get "/endpoint/show/prime", to: "endpoints#show_prime", as: "endpoint_prime"
 end

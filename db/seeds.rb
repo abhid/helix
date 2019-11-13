@@ -17,7 +17,7 @@ if ENV.fetch("IMPORT_OUI") { false }
       oui, vendor = entry.split(" ")
       rec = Oui.find_or_initialize_by(oui: "#{oui}000000")
       rec.vendor = vendor
-      oui_list << rec
+      oui_list << rec if rec.new_record?
     end
     Oui.import oui_list
   end
@@ -31,3 +31,5 @@ ise = {mnt: ENV["ISE_MNT"], pan: ENV["ISE_PAN"], ise_username: ENV["ISE_USERNAME
 Setting["ise"] = ise
 prime = {server: ENV["PRIME_IP"], username: ENV["PRIME_USERNAME"], password: ENV["PRIME_PASSWORD"]}
 Setting["prime"] = prime
+infoblox = {server: ENV["BLOX_SERVER"], username: ENV["BLOX_USERNAME"], password: ENV["BLOX_PASSWORD"]}
+Setting["infoblox"] = infoblox

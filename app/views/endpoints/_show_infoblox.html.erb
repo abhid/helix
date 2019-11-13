@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header bg-primary text-light d-flex justify-content-between align-items-center">
+    Infoblox
+    <div class="badge badge-light">
+      <%= @ib_lease.binding_state %>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        IP Address
+      </div>
+      <div class="col-6">
+        <samp><%= @ib_lease.address %></samp>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        Hostname
+      </div>
+      <div class="col-6">
+        <samp><%= @ib_lease.client_hostname %></samp>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        MAC Address
+      </div>
+      <div class="col-6">
+        <samp><%= @ib_lease.hardware %></samp>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        Lease started
+      </div>
+      <div class="col-6">
+        <abbr class="timeago" title="<%= DateTime.strptime(@ib_lease.starts.to_s,'%s').strftime("%F %T") %>" datetime="<%= DateTime.strptime(@ib_lease.starts.to_s,'%s') %>">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        Lease ends
+      </div>
+      <div class="col-6">
+        <abbr class="timeago" title="<%= DateTime.strptime(@ib_lease.ends.to_s,'%s').strftime("%F %T") %>" datetime="<%= DateTime.strptime(@ib_lease.ends.to_s,'%s') %>">
+      </div>
+    </div>
+  </div>
+</div>

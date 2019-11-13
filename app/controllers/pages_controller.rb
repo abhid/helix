@@ -6,38 +6,43 @@ class PagesController < ApplicationController
   end
 
   def status
-    @session = Session.find_by(ip_address: request.ip)
-    unless @session
-      session = $mnt.session_filterByIP(request.ip)["sessionParameters"]
-      if session
-        @session = Session.find_or_create_by(mac: session["calling_station_id"])
-        @session.active = true
-        @session.mac = session["calling_station_id"]
-        @session.username = session["user_name"]
-        @session.ip_address = session["framed_ip_address"]
-        @session.audit_session_id = session["audit_session_id"]
-        @session.save
-      end
-    else
-
-    end
-
-    if @session.nil?
-      render "no_entry.html.erb", layout: "guest"
-    else
-      @mnt_ep = Rails.cache.fetch("mnt_session_#{@session.mac}") { $mnt.session_filterByIP(request.ip)["sessionParameters"] }
-      @ers_ep = Rails.cache.fetch("ers_ep_#{@session.mac}") { $ers.ep_get($ers.ep_filterByMAC(@session.mac)["SearchResult"]["resources"][0]["id"])["ERSEndPoint"] }
-
-      prime_list = JSON.parse($prime.get("ClientDetails.json?.nocount=true&macAddress=\"#{@session.mac}\"").body)["queryResponse"]["entityId"]
-      if prime_list
-        @prime_info = JSON.parse($prime.get("ClientDetails/#{prime_list[0]["$"]}.json?.nocount=true").body)["queryResponse"]["entity"][0]["clientDetailsDTO"]
-      end
-
-      @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
-      # Show a different layout based on current_user status
-      render "endpoints/show", layout: current_user ? "application" : "guest"
-    end
+    @mac_address = Infoblox::Lease.find($ib_ctx, {"address": request.ip}).first.hardware
+    render "endpoints/show", layout: current_user ? "application" : "guest"
   end
+
+  # def status
+  #   @session = Session.find_by(ip_address: request.ip)
+  #   unless @session
+  #     session = $mnt.session_filterByIP(request.ip)["sessionParameters"]
+  #     if session
+  #       @session = Session.find_or_create_by(mac: session["calling_station_id"])
+  #       @session.active = true
+  #       @session.mac = session["calling_station_id"]
+  #       @session.username = session["user_name"]
+  #       @session.ip_address = session["framed_ip_address"]
+  #       @session.audit_session_id = session["audit_session_id"]
+  #       @session.save
+  #     end
+  #   else
+  #
+  #   end
+  #
+  #   if @session.nil?
+  #     render "no_entry.html.erb", layout: "guest"
+  #   else
+  #     @mnt_ep = Rails.cache.fetch("mnt_session_#{@session.mac}") { $mnt.session_filterByIP(request.ip)["sessionParameters"] }
+  #     @ers_ep = Rails.cache.fetch("ers_ep_#{@session.mac}") { $ers.ep_get($ers.ep_filterByMAC(@session.mac)["SearchResult"]["resources"][0]["id"])["ERSEndPoint"] }
+  #
+  #     prime_list = JSON.parse($prime.get("ClientDetails.json?.nocount=true&macAddress=\"#{@session.mac}\"").body)["queryResponse"]["entityId"]
+  #     if prime_list
+  #       @prime_info = JSON.parse($prime.get("ClientDetails/#{prime_list[0]["$"]}.json?.nocount=true").body)["queryResponse"]["entity"][0]["clientDetailsDTO"]
+  #     end
+  #
+  #     @ep_group = EndpointGroup.find_by(uuid: @ers_ep["groupId"])
+  #     # Show a different layout based on current_user status
+  #     render "endpoints/show", layout: current_user ? "application" : "guest"
+  #   end
+  # end
 
   def login
     if session[:user_id]

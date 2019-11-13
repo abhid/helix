@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    ISE Endpoint Info
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-sm table-borderless">
+      <tr>
+        <td>Name</td>
+        <td><samp><%= @ers_ep["name"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Group</td>
+        <td title="<%= @ers_ep["groupId"] %>"><samp><%= @ep_group.name %></samp><br/><%= @ep_group.description %></td>
+      </tr>
+      <tr>
+        <td>Static Group Assignment</td>
+        <td><samp><%= @ers_ep["staticGroupAssignment"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Profile</td>
+        <td><samp><%= @ers_ep["profileId"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Static Profile Assignment</td>
+        <td><samp><%= @ers_ep["staticProfileAssignment"] %></samp></td>
+      </tr>
+      <tr>
+        <td>Portal User</td>
+        <td><samp><%= @ers_ep["portalUser"] %></samp></td>
+      </tr>
+    </table>
+  </div>
+</div>

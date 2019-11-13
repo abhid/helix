@@ -37,7 +37,7 @@ async def subscribe_loop(nodename, secret, ws_url, pubsub_node, topic):
         if not stop_event.is_set():
             message = json.loads(future.result())
             r.rpush("stomp:"+topic, json.dumps(message))
-            [print(i["state"] + " | " + i["userName"]) for i in message["sessions"]]
+            # [print(i["state"] + " | " + i["userName"]) for i in message["sessions"]]
         else:
             await ws.stomp_disconnect('123')
             # wait for receipt

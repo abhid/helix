@@ -3,6 +3,9 @@
     <div class="card">
       <div class="card-header bg-primary text-white">
         Active Directory Settings
+        <div class="badge badge-dark badge-success float-right">
+          Enabled
+        </div>
       </div>
       <div class="card-body">
         <div class="row">
@@ -32,6 +35,9 @@
     <div class="card">
       <div class="card-header bg-primary text-white">
         Cisco ISE Settings
+        <div class="badge badge-dark badge-success float-right">
+          Enabled
+        </div>
       </div>
       <div class="card-body">
         <div class="row">
@@ -79,6 +85,9 @@
     <div class="card">
       <div class="card-header bg-primary text-white">
         Cisco Prime Settings
+        <div class="badge badge-dark badge-success float-right">
+          Enabled
+        </div>
       </div>
       <div class="card-body">
         <div class="row">
@@ -99,6 +108,40 @@
           </div>
           <div class="col-6">
             <span class="editable"><%= Setting["prime"]["password"] %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-2 row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Infoblox IPAM Settings
+        <div class="badge badge-dark badge-success float-right">
+          In-Progress
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            Grid Master
+          </div>
+          <div class="col-6">
+            <span class="editable"><%= Setting["infoblox"]["server"] %></span>
+          </div>
+          <div class="col-6">
+            Username
+          </div>
+          <div class="col-6">
+            <span class="editable"><%= Setting["infoblox"]["username"] %></span>
+          </div>
+          <div class="col-6">
+            Password
+          </div>
+          <div class="col-6">
+            <span class="editable"><%= Setting["infoblox"]["password"] %></span>
           </div>
         </div>
       </div>
