@@ -15,4 +15,9 @@ class NetworkDevicesController < ApplicationController
 
     render json: @network_device
   end
+
+  def oxidized_conf
+    @network_devices = NetworkDevice.all
+    render "oxidized_conf", layout: false
+  end
 end
