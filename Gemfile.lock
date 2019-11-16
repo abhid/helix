@@ -154,6 +154,7 @@ GEM
     puma (3.12.1)
     pxgrid (0.1.1)
       faraday (~> 0.17)
+    pycall (1.2.1)
     raabro (1.1.6)
     rack (2.0.7)
     rack-protection (2.0.7)
@@ -282,11 +283,13 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   net-ldap
+  net-ssh
   nokogiri
   pagy
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   pxgrid
+  pycall
   rails (~> 6.0.0)
   render_async
   rufus-scheduler

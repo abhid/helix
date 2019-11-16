@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   match "/logout", to: "pages#logout", as: "logout", via: [:get]
   # Settings page
   match "/settings", to: "pages#settings", as: "settings", via: [:post, :get]
+
   get "/network_devices/router.db", to: "network_devices#oxidized_conf"
+  get "/network_devices/:id/running_config", to: "network_devices#running_config", as: "network_device_running_config"
   get "/network_device_groups/:id/router.db", to: "network_device_groups#oxidized_conf"
 
   # Resources

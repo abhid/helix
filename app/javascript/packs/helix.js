@@ -58,5 +58,8 @@ $(document).on('turbolinks:load', function() {
     $(this).find("i").toggleClass("fa-play").toggleClass("fa-pause")
     window.liveLog = !window.liveLog;
     $(".filters").children("button").toggleClass("active disabled");
-  })
+  });
+
+  // Quicksearch
+  $('input#int-list-filter').quicksearch('#interface-analyzer .interface');
 });

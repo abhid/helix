@@ -33,3 +33,7 @@ prime = {server: ENV["PRIME_IP"], username: ENV["PRIME_USERNAME"], password: ENV
 Setting["prime"] = prime
 infoblox = {server: ENV["BLOX_SERVER"], username: ENV["BLOX_USERNAME"], password: ENV["BLOX_PASSWORD"]}
 Setting["infoblox"] = infoblox
+ssh = {username: ENV["SSH_USERNAME"], password: ENV["SSH_PASSWORD"]}
+Setting["ssh"] = ssh
+gitlab = {path: ENV["GITLAB_PATH"], token: ENV["GITLAB_TOKEN"]}
+Setting["gitlab"] = gitlab

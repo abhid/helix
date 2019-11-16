@@ -63,7 +63,7 @@
             ERS Password
           </div>
           <div class="col-6">
-            <span class="editable"><%= Setting["ise"]["ise_password"] %></span>
+            <span class="editable"><%= Setting["ise"]["ise_password"].clear %></span>
           </div>
           <div class="col-6">
             pxGrid Username
@@ -75,7 +75,7 @@
             pxGrid Password
           </div>
           <div class="col-6">
-            <span class="editable"><%= Setting["ise"]["pxgrid_password"] %></span>
+            <span class="editable"><%= Setting["ise"]["pxgrid_password"].clear %></span>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
             Password
           </div>
           <div class="col-6">
-            <span class="editable"><%= Setting["prime"]["password"] %></span>
+            <span class="editable"><%= Setting["prime"]["password"].clear %></span>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@
       <div class="card-header bg-primary text-white">
         Infoblox IPAM Settings
         <div class="badge badge-dark badge-success float-right">
-          In-Progress
+          Enabled
         </div>
       </div>
       <div class="card-body">
@@ -141,7 +141,33 @@
             Password
           </div>
           <div class="col-6">
-            <span class="editable"><%= Setting["infoblox"]["password"] %></span>
+            <span class="editable"><%= Setting["infoblox"]["password"].clear %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Device SSH Settings
+        <div class="badge badge-dark badge-success float-right">
+          In-Progress
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            Username
+          </div>
+          <div class="col-6">
+            <span class="editable"><%= Setting["ssh"]["username"] %></span>
+          </div>
+          <div class="col-6">
+            Password
+          </div>
+          <div class="col-6">
+            <span class="editable"><%= Setting["ssh"]["password"].clear %></span>
           </div>
         </div>
       </div>
